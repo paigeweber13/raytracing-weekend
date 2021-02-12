@@ -3,17 +3,17 @@
 ##############
 
 # if desired, change the directories
-set(sourceDirectory "src/")
+set(sourceDirectory "src/weberRaytracing/")
 set(testDirectory "tests/")
 
 # IMPORTANT: when you add source files, introduce them here
 
 # these files must be in ${sourceDirectory}
 set(mainFile "main.cpp")
-set(sourcesList "hello.cpp")
+set(sourcesList "hello.cpp" "imageOutput.cpp")
 
 # these files must be in ${testDirectory}
-set(testList "catch-main.cpp" "test-01-hello.cpp")
+set(testList "catch-main.cpp" "test-01-image-output.cpp")
 
 # change these to match your project
 project(HelloFullBuildSystem)
@@ -51,7 +51,7 @@ string(PREPEND mainFile ${sourceDirectory})
 
 message(STATUS "sources: ${sourcesListFull}")
 message(STATUS "main file: ${mainFile}")
-add_executable(${execName} ${sourcesListFull} ${mainFile})
+add_executable(${execName} ${mainFile} ${sourcesListFull})
 target_link_libraries(${execName} ${CONAN_LIBS})
 
 
