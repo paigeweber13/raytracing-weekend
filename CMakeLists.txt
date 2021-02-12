@@ -10,14 +10,14 @@ set(testDirectory "tests/")
 
 # these files must be in ${sourceDirectory}
 set(mainFile "main.cpp")
-set(sourcesList "hello.cpp" "imageOutput.cpp")
+set(sourcesList "imageOutput.cpp")
 
 # these files must be in ${testDirectory}
 set(testList "catch-main.cpp" "test-01-image-output.cpp")
 
 # change these to match your project
-project(HelloFullBuildSystem)
-set(execName hello)
+project(WeberRaytracing)
+set(execName wrtx)
 
 # optionally, change the test suffix or change the name completely
 set(testExecName ${execName}-test)
