@@ -10,10 +10,10 @@ set(testDirectory "tests/")
 
 # these files must be in ${sourceDirectory}
 set(mainFile "main.cpp")
-set(sourcesList "imageOutput.cpp")
+set(sourcesList "imageOutput.cpp" "linearAlgebra/vec3.cpp")
 
 # these files must be in ${testDirectory}
-set(testList "catch-main.cpp" "test-01-image-output.cpp")
+set(testList "catch-main.cpp" "test-01-image-output.cpp" "test-02-vec3.cpp")
 
 # change these to match your project
 project(WeberRaytracing)
