@@ -2,19 +2,28 @@
 
 #include "imageOutput.hpp"
 
-TEST_CASE("01: get simple PPM output", "[weberRaytracing::imageOutput]") {
+TEST_CASE("01: imageOutput class works as expected",
+          "[weberRaytracing::imageOutput]") {
   // taken from the PPM example on this wikipedia page:
   // https://en.wikipedia.org/wiki/Netpbm#File_formats
 
-  weberRaytracing::imageOutput::image testImage = {
+  weberRaytracing::dataStructures::Image testImage = {
       {{1.0, 0.0, 0.0}, {0.0, 1.0, 0.0}, {0.0, 0.0, 1.0},},
       {{1.0, 1.0, 0.0}, {1.0, 1.0, 1.0}, {0.0, 0.0, 0.0},},
   };
 
-  auto expectedPPMString = "P3\n"
-                           "3 2 1\n"
-                           "1 0 0 0 1 0 0 0 1 1 1 0 1 1 1 0 0 0";
 
-  REQUIRE(weberRaytracing::imageOutput::outputToPPM(testImage) ==
-          expectedPPMString);
+  SECTION( "outputToPPM produces expected output" ) {
+    auto expectedPPMString = "P3\n"
+                             "3 2 1\n"
+                             "1 0 0\n"
+                             "0 1 0\n"
+                             "0 0 1\n"
+                             "1 1 0\n"
+                             "1 1 1\n"
+                             "0 0 0\n";
+
+    REQUIRE(weberRaytracing::imageOutput::outputToPPM(testImage).compare(
+            expectedPPMString));
+  }
 }
