@@ -71,7 +71,8 @@ IF (Catch2_FOUND)
     include_directories(${sourceDirectory})
 
     add_executable(${testExecName} ${sourcesListFull} ${testListFull})
-    target_link_libraries(${testExecName} PRIVATE Catch2::Catch2)
+    target_link_libraries(${testExecName} PUBLIC ${CONAN_LIBS} PRIVATE
+            Catch2::Catch2)
 ELSE ()
     message(STATUS "Catch2 not found, not generating test executable")
 ENDIF ()
