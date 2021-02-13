@@ -25,6 +25,7 @@ namespace weberRaytracing {
 
   namespace imageOutput {
     const std::string PPM_FORMAT = "P3";
+    const unsigned MAX_PIXEL_VALUE = 255;
 
     std::string outputToPPM(dataStructures::Image);
 

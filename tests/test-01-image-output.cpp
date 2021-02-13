@@ -15,15 +15,16 @@ TEST_CASE("01: imageOutput class works as expected",
 
   SECTION( "outputToPPM produces expected output" ) {
     auto expectedPPMString = "P3\n"
-                             "3 2 1\n"
-                             "1 0 0\n"
-                             "0 1 0\n"
-                             "0 0 1\n"
-                             "1 1 0\n"
-                             "1 1 1\n"
+                             "3 2\n"
+                             "255\n"
+                             "255 0 0\n"
+                             "0 255 0\n"
+                             "0 0 255\n"
+                             "255 255 0\n"
+                             "255 255 255\n"
                              "0 0 0\n";
 
-    REQUIRE(weberRaytracing::imageOutput::outputToPPM(testImage).compare(
-            expectedPPMString));
+    REQUIRE(weberRaytracing::imageOutput::outputToPPM(testImage) ==
+            expectedPPMString);
   }
 }

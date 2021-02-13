@@ -12,8 +12,9 @@ namespace imgOut = weberRaytracing::imageOutput;
 // Writing to format
 std::string imgOut::outputToPPM(Img imageToOutput) {
   auto PPMString = fmt::format("{}\n", imgOut::PPM_FORMAT);
-  PPMString += fmt::format("{:d} {:d}\n", imageToOutput.size(), imageToOutput
-  .begin()->size());
+  PPMString += fmt::format("{:d} {:d}\n", imageToOutput.begin()->size(),
+                           imageToOutput.size());
+  PPMString += fmt::format("{:d}\n", imgOut::MAX_PIXEL_VALUE);
 
   for (auto const& row : imageToOutput) {
     for (auto const& pixel : row) {
