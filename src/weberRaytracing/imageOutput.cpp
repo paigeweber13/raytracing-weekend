@@ -7,7 +7,16 @@
 typedef weberRaytracing::dataStructures::Image Img;
 
 //namespace wrtx = weberRaytracing;
+namespace wds = weberRaytracing::dataStructures;
 namespace imgOut = weberRaytracing::imageOutput;
+
+std::string imgOut::colorToString(wds::color pixelColor) {
+  // Write the translated [0,255] value of each color component.
+  return fmt::format("{:d} {:d} {:d}\n",
+                     static_cast<int>(255.999 * pixelColor.r()),
+                     static_cast<int>(255.999 * pixelColor.g()),
+                     static_cast<int>(255.999 * pixelColor.b()));
+}
 
 // Writing to format
 std::string imgOut::outputToPPM(Img imageToOutput) {
@@ -23,10 +32,7 @@ std::string imgOut::outputToPPM(Img imageToOutput) {
     for (auto const &pixel : imageToOutput[row_i]) {
       // only output one pixel per line. This is an easy way to stay within
       // the PPM standard's limit of 70 characters per line.
-      PPMString += fmt::format("{:d} {:d} {:d}\n",
-                               static_cast<int>(255.999 * pixel.r),
-                               static_cast<int>(255.999 * pixel.g),
-                               static_cast<int>(255.999 * pixel.b));
+      PPMString += colorToString(pixel);
     }
   }
 

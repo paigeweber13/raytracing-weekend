@@ -9,7 +9,7 @@ wds::Image createTestImage() {
   const int image_height = 256;
   const double b = 0.25;
 
-  wds::Image testImage(image_height, std::vector<wds::RGBColor>(image_width));
+  wds::Image testImage(image_height, std::vector<wds::color>(image_width));
 
 //  for (int j = image_height - 1; j >= 0; j--) {
   for (int j = 0; j < image_height; j++) {
@@ -20,7 +20,7 @@ wds::Image createTestImage() {
       // as height increases (top to bottom), so does green
       auto g = double(j) / (image_height - 1);
 
-      testImage[j][i] = wds::RGBColor{r, g, b};
+      testImage[j][i] = wds::color{r, g, b};
     }
   }
 
