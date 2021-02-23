@@ -10,7 +10,7 @@ set(testDirectory "tests/")
 
 # these files must be in ${sourceDirectory}
 set(mainFile "main.cpp")
-set(sourcesList "imageOutput.cpp" "linearAlgebra/vec3.cpp")
+set(sourcesList "imageOutput.cpp")
 
 # these files must be in ${testDirectory}
 set(testList "catch-main.cpp" "test-01-image-output.cpp" "test-02-vec3.cpp")
