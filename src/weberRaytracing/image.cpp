@@ -11,6 +11,8 @@ namespace wds = weberRaytracing::dataStructures;
 namespace imgOut = weberRaytracing::imageOutput;
 
 std::string imgOut::colorToString(wds::color pixelColor) {
+  const double PIXEL_CONVERSION_VALUE = 255.999;
+
   // Write the translated [0,255] value of each color component.
   return fmt::format("{:d} {:d} {:d}\n",
                      static_cast<int>(PIXEL_CONVERSION_VALUE * pixelColor.r()),
@@ -20,10 +22,13 @@ std::string imgOut::colorToString(wds::color pixelColor) {
 
 // Writing to format
 std::string imgOut::outputToPPM(Img imageToOutput) {
-  auto PPMString = fmt::format("{}\n", imgOut::PPM_FORMAT);
+  const std::string PPM_FORMAT = "P3";
+  const unsigned PPM_MAX_PIXEL_VALUE = 255;
+
+  auto PPMString = fmt::format("{}\n", PPM_FORMAT);
   PPMString += fmt::format("{:d} {:d}\n", imageToOutput.begin()->size(),
                            imageToOutput.size());
-  PPMString += fmt::format("{:d}\n", imgOut::PPM_MAX_PIXEL_VALUE);
+  PPMString += fmt::format("{:d}\n", PPM_MAX_PIXEL_VALUE);
 
   for (size_t row_i = 0; row_i < imageToOutput.size(); row_i++) {
     fmt::print(stderr, "\rScan lines remaining: {:d}", imageToOutput.size() -

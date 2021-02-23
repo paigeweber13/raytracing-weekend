@@ -27,7 +27,7 @@ wds::Image createTestImage() {
   return testImage;
 }
 
-int main(int argc, char **argv) {
+int main() {
   fmt::print("{}", wio::outputToPPM(createTestImage()));
 
   return 0;
