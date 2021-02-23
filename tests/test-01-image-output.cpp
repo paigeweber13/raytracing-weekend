@@ -1,6 +1,6 @@
 #include <catch2/catch.hpp>
 
-#include "imageOutput.hpp"
+#include "image.hpp"
 
 TEST_CASE("01: imageOutput class works as expected",
           "[weberRaytracing::imageOutput]") {

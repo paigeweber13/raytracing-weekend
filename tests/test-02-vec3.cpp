@@ -5,11 +5,11 @@
 #include <catch2/catch.hpp>
 #include <sstream>
 
-#include "linearAlgebra/vec3.hpp"
+#include "dataStructures/vec3.hpp"
 
-using weberRaytracing::linearAlgebra::vec3;
-using weberRaytracing::linearAlgebra::point3;
-using weberRaytracing::linearAlgebra::color;
+using weberRaytracing::dataStructures::vec3;
+using weberRaytracing::dataStructures::point3;
+using weberRaytracing::dataStructures::color;
 
 TEST_CASE("01: test constructors and aliases") {
   vec3 v_trivial;

@@ -2,8 +2,8 @@
 // Created by riley on 2/13/21.
 //
 
-#ifndef WEBERRAYTRACING_LINEARALGEBRA_VEC3_HPP
-#define WEBERRAYTRACING_LINEARALGEBRA_VEC3_HPP
+#ifndef WEBERRAYTRACING_VEC3_HPP
+#define WEBERRAYTRACING_VEC3_HPP
 
 // STL
 #include <cmath>
@@ -13,7 +13,7 @@
 
 using std::sqrt;
 
-namespace weberRaytracing::linearAlgebra {
+namespace weberRaytracing::dataStructures {
   class vec3 {
     // this class was copied directly from Shirley's book:
     // https://raytracing.github.io/books/RayTracingInOneWeekend.html#thevec3class

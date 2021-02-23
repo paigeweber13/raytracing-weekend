@@ -9,8 +9,8 @@ set(testDirectory "tests/")
 # IMPORTANT: when you add source files, introduce them here
 
 # these files must be in ${sourceDirectory}
+set(sourcesList "image.cpp")
 set(mainFile "main.cpp")
-set(sourcesList "imageOutput.cpp")
 
 # these files must be in ${testDirectory}
 set(testList "catch-main.cpp" "test-01-image-output.cpp" "test-02-vec3.cpp")

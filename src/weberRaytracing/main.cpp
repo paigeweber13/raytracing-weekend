@@ -1,5 +1,5 @@
 
-#include "imageOutput.hpp"
+#include "image.hpp"
 
 namespace wds = weberRaytracing::dataStructures;
 namespace wio = weberRaytracing::imageOutput;
