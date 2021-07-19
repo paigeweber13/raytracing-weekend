@@ -8,8 +8,12 @@ set(testDirectory "tests/")
 
 # IMPORTANT: when you add source files, introduce them here
 
-# these files must be in ${sourceDirectory}
-set(sourcesList "image.cpp")
+## these files must be in ${sourceDirectory}
+# sources
+list(APPEND sourcesList "image.cpp")
+# headers
+list(APPEND sourcesList "image.hpp" "dataStructures/ray.hpp" "dataStructures/vec3.hpp")
+# main
 set(mainFile "main.cpp")
 
 # these files must be in ${testDirectory}
@@ -29,13 +33,18 @@ set(testExecName ${execName}-test)
 
 # you probably won't need to change anything in this section
 
-### Configuration, Conan
+### Configuration
 cmake_minimum_required(VERSION 2.8.12)
 
-add_definitions("-std=c++11")
+add_definitions("-std=c++14")
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+### Adding dependencies
+
+# find packages
+find_package(fmt)
+
+# these will all be used in "target_link_libraries" later
+list(APPEND LIBS fmt::fmt)
 
 
 ### Primary executable
@@ -52,7 +61,7 @@ string(PREPEND mainFile ${sourceDirectory})
 message(STATUS "sources: ${sourcesListFull}")
 message(STATUS "main file: ${mainFile}")
 add_executable(${execName} ${mainFile} ${sourcesListFull})
-target_link_libraries(${execName} ${CONAN_LIBS})
+target_link_libraries(${execName} ${LIBS})
 
 
 #### Testing with Catch2
@@ -71,7 +80,7 @@ IF (Catch2_FOUND)
     include_directories(${sourceDirectory})
 
     add_executable(${testExecName} ${sourcesListFull} ${testListFull})
-    target_link_libraries(${testExecName} PUBLIC ${CONAN_LIBS} PRIVATE
+    target_link_libraries(${testExecName} PUBLIC ${LIBS} PRIVATE
             Catch2::Catch2)
 ELSE ()
     message(STATUS "Catch2 not found, not generating test executable")
