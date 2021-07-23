@@ -5,22 +5,24 @@ book, [available here](https://raytracing.github.io/)
 
 # Prerequisistes
 
-- GNU make
 - A C++ compiler
+- GNU make
 - CMake
-- [Conan](https://conan.io/) (pip3 install --user conan)
-- (Optional) [Catch2](https://github.com/catchorg/Catch2)
+- [fmt](https://github.com/fmtlib/fmt) v6.1.2 - installable on ubuntu 20.04 
+  with `sudo apt install libfmt-dev`
+- (Optional) [Catch2](https://github.com/catchorg/Catch2) v2.13.6 - follow 
+  the [directions here](https://github.com/catchorg/Catch2/blob/v2.x/docs/cmake-integration.md#installing-catch2-from-git-repository) and be 
+  sure to check out tag v2.13.6 before installing.
 
 # Running
 
 First, build executables:
 
 1. `mkdir build && cd build`
-2. `conan install ..`
-3. `cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release`
-4. `cmake --build .`
+3. `cmake ..`
+4. `make`
 
 Next, (assuming you are still in the `build` directory) run the software with
-`bin/hello`. You may run tests with `bin/hello-test`. Catch2 must be installed
+`./wrtx`. You may run tests with `./wrtx-test`. Catch2 must be installed
 for tests to work.
  
