@@ -30,10 +30,14 @@ std::string imgOut::outputToPPM(Img imageToOutput) {
                            imageToOutput.size());
   PPMString += fmt::format("{:d}\n", PPM_MAX_PIXEL_VALUE);
 
-  for (size_t row_i = 0; row_i < imageToOutput.size(); row_i++) {
-    fmt::print(stderr, "\rScan lines remaining: {:d}", imageToOutput.size() -
-                                                       row_i);
-    std::cerr.flush();
+  for (int row_i = imageToOutput.size() - 1; row_i >= 0; row_i--) {
+
+    if (row_i % 100 == 0) {
+      fmt::print(stderr, "\rScan lines remaining: {:d}",
+                 imageToOutput.size() - row_i);
+      std::cerr.flush();
+    }
+
     for (auto const &pixel : imageToOutput[row_i]) {
       // only output one pixel per line. This is an easy way to stay within
       // the PPM standard's limit of 70 characters per line.
