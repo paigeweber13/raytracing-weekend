@@ -3,7 +3,7 @@
 ##############
 
 # if desired, change the directories
-set(sourceDirectory "src/weberRaytracing/")
+set(sourceDirectory "src/")
 set(testDirectory "tests/")
 
 # IMPORTANT: when you add source files, introduce them here
