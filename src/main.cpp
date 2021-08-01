@@ -5,7 +5,23 @@
 namespace wds = weberRaytracing::dataStructures;
 namespace wio = weberRaytracing::imageOutput;
 
+bool hit_sphere(const wds::point3 &center, double radius, const wds::ray &r) {
+  // this function contains the hard-coded math to solve the polynomial
+  // equation that tells us if a ray intercepts a sphere
+  wds::vec3 oc = r.origin() - center;
+  auto a = wds::dot(r.direction(), r.direction());
+  auto b = 2.0 * dot(oc, r.direction());
+  auto c = dot(oc, oc) - radius*radius;
+  auto discriminant = b*b - 4*a*c;
+  return (discriminant > 0);
+}
+
 wds::color ray_color(const wds::ray &r) {
+  // place a sphere at -1 on the z axis, color the image red if ray
+  // intercects it
+  if (hit_sphere(wds::point3(0, 0, -1), 0.5, r))
+    return wds::color(1, 0, 0);
+
   // all this does is show a background, which is a simple gradient
   wds::vec3 unit_direction = unit_vector(r.direction());
   auto t = 0.5 * (unit_direction.y() + 1.0);
